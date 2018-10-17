@@ -3,22 +3,45 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.Random;
+import fungeonCrawl.monsters.*;
+import fungeonCrawl.Treasure;
 
 public class Room {
 
-	    private boolean cleared = false;
+	    private int RoomID;
+		private boolean cleared = false;
 	    private ArrayList<AbstractActor> occupants = new ArrayList<AbstractActor>();
 	    private ArrayList<Treasure> treasures = new ArrayList<Treasure>();
 
 	    public Room(final boolean cleared,
-	                final ArrayList<AbstractActor> occupants,
-	                final ArrayList<Treasure> treasures) {
+	                final int RoomID) {
 	        this.cleared = cleared;
-	        this.occupants = occupants;
-	        this.treasures = treasures;
+	        this.RoomID = RoomID;
 
 	    }
-
+	    
+	    public void populate() {
+	    	Random rand = new Random();
+	    	int monsterID = rand.nextInt(20) + 1;
+	    	int treasureID = rand.nextInt(20) + 1;
+	    	if (monsterID < 7) {
+	    		setCleared(true);
+	    	}
+	    	else if (monsterID >= 7 && monsterID < 15) {
+	    		occupants.add(new Goblin("Goblin"));
+	    	}
+	    	else {
+	    		occupants.add(new Spider("Spider"));
+	    	}
+	    	this.treasures.add(new Treasure(treasureID)); 
+	    }
+	    
+	    public void roomReport() {
+	    	System.out.println("Room" + RoomID + " exists.");
+	    	System.out.println(getOccupants());
+	    	System.out.println(getTreasure());
+	    }
 	    private boolean getCleared() {
 	        return cleared;
 	    }

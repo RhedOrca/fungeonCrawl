@@ -1,6 +1,8 @@
 package fungeonCrawl;
 
 public class Treasure {
-	private static int ItemID;
-	
+	public int ItemID;
+	public Treasure(int ItemID) {
+		this.ItemID = ItemID;
+	}
 }
