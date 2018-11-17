@@ -10,17 +10,25 @@ public class Main {
 		System.out.println("Please enter your dungeon length. (Int only!)");
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
-		scanner.close();
+
 		int dungeonLength = Integer.parseInt(input);
-		DungeonBuilder.buildDungeon(dungeonLength);
-		AbstractRoom Room0 = new Room(false, 0);
-		Player Eric = new Player("Eric", "Brawler", Room0);
-		//Goblin Gubthrub = new Goblin("Gubthrub", Room0);
-		Eric.intro();
-		while (Eric.getIsAlive()) {
-			System.out.println("Where would you like to go?");
-			//Scanner scanner = new Scanner(System.in);
-			moveRooms(Eric, Room0.next, "North");
+
+		Player player1 = new Player("Eric", "Brawler");
+		Goblin Gubthrub = new Goblin("Gubthrub");
+
+		DungeonBuilder dungeonBuilder = new DungeonBuilder();
+		dungeonBuilder.buildDungeon(dungeonLength, player1);
+
+
+
+		player1.intro();
+
+
+		while (player1.getIsAlive()) {
+			System.out.println("What would you like to do?" + " You can: Look (L), Go (G), etc...");
+			String choice = scanner.nextLine();
+			Interpreter.interpret(choice, player1);
+
 		}
 	}
 }

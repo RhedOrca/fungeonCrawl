@@ -5,7 +5,6 @@ public abstract class AbstractActor {
     protected AbstractRoom location;
     protected int maxHp = 20;
     protected int hp = 20;
-    protected boolean isAlive = true;
     protected int dr = 0;
     protected int melDmg = 1;
     protected int melAcc = 90;
@@ -17,6 +16,10 @@ public abstract class AbstractActor {
     protected int rngdResist = 0;
     protected int magResist = 0;
 
+
+    public void setLocation(Room room) {
+        this.location = room;
+    }
 
     public void reportHp() {
     	System.out.println(name + " has " + getHp() + " health remaining.");
@@ -69,14 +72,6 @@ public abstract class AbstractActor {
     public void setMagResist(final int magResist) {
     	this.magResist = magResist;
     }
-    
-    public boolean getIsAlive() {
-        return isAlive;
-    }
-
-    public void setIsAlive(final boolean isAlive) {
-        this.isAlive = isAlive;
-    }
 
     public String getName() {
         return name;
@@ -88,14 +83,6 @@ public abstract class AbstractActor {
 
     public int getHp() {
         return hp;
-    }
-
-    public void setHp(final int hp) {
-        this.hp = hp;
-
-        if (this.hp <= 0) {
-            this.isAlive = false;
-        }
     }
 
     public int getMelDmg() {
@@ -142,59 +129,5 @@ public abstract class AbstractActor {
     	this.melResist = melResist;
     }
     
-    
 
-
-
-    public void slash(final AbstractActor target) {
-      if ((getMelDmg() - target.getMelResist()) - target.getDR() > 0) {
-        target.setHp(target.getHp() - (getMelDmg() - target.getMelResist() - target.getDR()));
-        System.out.println(getName() + "'s Slash did " + getMelDmg() + " damage!");
-      }
-      else {
-        System.out.println(this.name + "'s attack did no damage!");
-      }
-      target.reportHp();
-      System.out.println();
-    }
-
-    public void spark(final AbstractActor target) {
-        double hitchance = Math.floor(Math.random() * 100);
-        if (hitchance <= getMagAcc()) { //magic accuracy is out of 100
-          target.setHp(target.getHp() - getMagDmg());
-        System.out.println(getName() + "'s spark did " + getMagDmg() + " damage!");
-        }
-        else{
-          System.out.println(getName() + "'s Spark missed!");
-        }
-        target.reportHp();
-        System.out.println();
-    }
-
-    public void defend() { //heal for 1, gain 2 DR.
-      if ((getHp() + 1) <= this.maxHp) {
-        setHp(getHp() + 1);
-      }
-      else{
-        setHp(maxHp);
-      }
-      System.out.println(getName() + " hunkers down!");
-      setDR(2);
-      reportHp();
-      System.out.println();
-      }
-
-    public void shoot(final AbstractActor target) {
-      //have a % chance to deal attacker's ranged damage
-      double hitchance = Math.floor(Math.random() * 100);
-      if (hitchance >= getRngdAcc() &&
-    		  (getRngdDmg() - target.getRngdResist() - target.getDR() > 0)) {
-        target.setHp(target.getHp() - getRngdDmg());
-      }
-      else {
-        System.out.println(getName() + "'s shot missed!");
-      }
-      target.reportHp();
-      System.out.println();
-    }
 }

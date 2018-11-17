@@ -14,6 +14,8 @@ public abstract class AbstractRoom {
     public AbstractRoom West;
     public AbstractRoom next;
 
+    protected String lightLevel;
+    protected String roomType;
     public int RoomID;
     public boolean cleared = false;
     public ArrayList<AbstractActor> occupants = new ArrayList<AbstractActor>();
@@ -39,6 +41,11 @@ public abstract class AbstractRoom {
         System.out.println("Room" + RoomID + " exists.");
         System.out.println(getOccupants());
         System.out.println(getTreasure());
+        System.out.println(this.North);
+        System.out.println(this.South);
+        System.out.println(this.East);
+        System.out.println(this.West);
+
     }
     private boolean getCleared() {
         return cleared;
@@ -66,7 +73,7 @@ public abstract class AbstractRoom {
 
     public void occupantUpdate() {
         for (AbstractActor occupant : occupants){
-            if (!occupant.getIsAlive()) {
+            if (occupant.getHp() < 1) {
                 occupants.remove(occupant);
             }
         }

@@ -11,6 +11,7 @@ public class Move {
             else {
                 currentRoom.occupants.remove(character);
                 currentRoom.North.occupants.add(character);
+                character.location = currentRoom.North;
                 return true;
             }
         }
@@ -19,7 +20,8 @@ public class Move {
 
             else {
                 currentRoom.occupants.remove(character);
-                currentRoom.North.occupants.add(character);
+                currentRoom.South.occupants.add(character);
+                character.location = currentRoom.South;
                 return true;
             }
         }
@@ -28,7 +30,8 @@ public class Move {
 
             else {
                 currentRoom.occupants.remove(character);
-                currentRoom.North.occupants.add(character);
+                currentRoom.East.occupants.add(character);
+                character.location = currentRoom.East;
                 return true;
             }
         }
@@ -38,7 +41,8 @@ public class Move {
 
             else {
                 currentRoom.occupants.remove(character);
-                currentRoom.North.occupants.add(character);
+                currentRoom.West.occupants.add(character);
+                character.location = currentRoom.West;
                 return true;
             }
         }
