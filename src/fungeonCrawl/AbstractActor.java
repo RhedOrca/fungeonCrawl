@@ -1,20 +1,21 @@
 package fungeonCrawl;
 
 public abstract class AbstractActor {
-	private String name; //
-    private int maxHp = 20;
-    private int hp = 20; //
-    private boolean isAlive = true; //
-    private int dr = 0; //
-    private int melDmg = 1; //
-    private int melAcc = 90; //
-    private int magDmg = 1; //
-    private int magAcc = 70; //
-    private int rngdDmg = 1; //
-    private int rngdAcc = 80; //
-    private int melResist = 0; //
-    private int rngdResist = 0; //
-    private int magResist = 0; //
+	protected String name;
+    protected AbstractRoom location;
+    protected int maxHp = 20;
+    protected int hp = 20;
+    protected boolean isAlive = true;
+    protected int dr = 0;
+    protected int melDmg = 1;
+    protected int melAcc = 90;
+    protected int magDmg = 1;
+    protected int magAcc = 70;
+    protected int rngdDmg = 1;
+    protected int rngdAcc = 80;
+    protected int melResist = 0;
+    protected int rngdResist = 0;
+    protected int magResist = 0;
 
 
     public void reportHp() {

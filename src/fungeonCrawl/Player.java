@@ -2,11 +2,12 @@ package fungeonCrawl;
 
 public class Player extends AbstractActor{
 	private String unitClass;
-	public void intro() {
+	public void intro(){
 		System.out.println("Hi, my name is " + getName());
 	}
-	Player(String name, String unitClass) {
+	Player(String name, String unitClass, AbstractRoom location) {
 		setName(name);
+		this.location = location;
 		this.unitClass = unitClass;
 	}
 }
