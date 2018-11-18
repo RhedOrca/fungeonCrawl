@@ -20,12 +20,9 @@ public class Main {
 		dungeonBuilder.buildDungeon(dungeonLength, player1);
 
 
-
-		player1.intro();
-
+		System.out.println("What would you like to do?" + " You can: Look (L), Go (G), etc...");
 
 		while (player1.getIsAlive()) {
-			System.out.println("What would you like to do?" + " You can: Look (L), Go (G), etc...");
 			String choice = scanner.nextLine();
 			Interpreter.interpret(choice, player1);
 

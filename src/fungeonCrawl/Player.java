@@ -1,5 +1,7 @@
 package fungeonCrawl;
 
+import fungeonCrawl.monsters.Spider;
+
 public class Player extends AbstractActor{
 	private String unitClass;
 	boolean isAlive = true;
@@ -15,13 +17,14 @@ public class Player extends AbstractActor{
 	}
 
 	public String look() {
-		AbstractRoom currentRoom = location;
+		Room currentRoom = (Room) location;
 		StringBuilder roomLook = new StringBuilder();
-		roomLook.append("You are in a ");
+		//currentRoom.roomReport();
+		roomLook.append("You are in ");
 		roomLook.append(currentRoom.adjective);
 		roomLook.append(" ");
 		roomLook.append(currentRoom.roomType);
-		roomLook.append(". You can see a path leading to the");
+		roomLook.append(". \nYou can see a path leading to the");
 		if (currentRoom.North != null) {
 			roomLook.append(" North");
 		}
@@ -34,8 +37,13 @@ public class Player extends AbstractActor{
 		if (currentRoom.West!= null) {
 			roomLook.append(" West");
 		}
-		roomLook.append(".");
-		currentRoom.roomReport();
+		if (currentRoom.Up != null) {
+			roomLook.append("\nIt looks like there's a way Up.");
+		}
+		if (currentRoom.Down != null) {
+			roomLook.append("\nIt looks like there's a way Down.");
+		}
+		roomLook.append("\nThere is a " + currentRoom.getOccupants());
 
 		return roomLook.toString();
 	}

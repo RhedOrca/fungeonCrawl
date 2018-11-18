@@ -58,6 +58,28 @@ public class Move {
             }
         }
 
+        else if(targetDirection.equals("up") || targetDirection.equals("u")){
+            if (currentRoom.Up == null) return false;
+
+            else {
+                currentRoom.occupants.remove(character);
+                currentRoom.Up.occupants.add(character);
+                character.location = currentRoom.Up;
+                return true;
+            }
+        }
+
+        else if(targetDirection.equals("down") || targetDirection.equals("d")){
+            if (currentRoom.Down == null) return false;
+
+            else {
+                currentRoom.occupants.remove(character);
+                currentRoom.Down.occupants.add(character);
+                character.location = currentRoom.Down;
+                return true;
+            }
+        }
+
         else {
             return false;
         }

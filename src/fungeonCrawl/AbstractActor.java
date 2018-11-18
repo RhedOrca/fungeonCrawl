@@ -3,6 +3,7 @@ package fungeonCrawl;
 public abstract class AbstractActor {
 	protected String name;
     protected AbstractRoom location;
+    public String species;
     protected int maxHp = 20;
     protected int hp = 20;
     protected int dr = 0;
@@ -19,6 +20,10 @@ public abstract class AbstractActor {
 
     public void setLocation(Room room) {
         this.location = room;
+    }
+
+    public String getSpecies() {
+        return species;
     }
 
     public void reportHp() {
