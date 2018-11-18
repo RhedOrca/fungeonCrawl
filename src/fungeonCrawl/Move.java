@@ -47,6 +47,17 @@ public class Move {
             }
         }
 
+        else if(targetDirection.equals("next") || targetDirection.equals("x")){
+            if (currentRoom.next == null) return false;
+
+            else {
+                currentRoom.occupants.remove(character);
+                currentRoom.next.occupants.add(character);
+                character.location = currentRoom.next;
+                return true;
+            }
+        }
+
         else {
             return false;
         }

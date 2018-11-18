@@ -18,7 +18,7 @@ public class Player extends AbstractActor{
 		AbstractRoom currentRoom = location;
 		StringBuilder roomLook = new StringBuilder();
 		roomLook.append("You are in a ");
-		roomLook.append(currentRoom.lightLevel);
+		roomLook.append(currentRoom.adjective);
 		roomLook.append(" ");
 		roomLook.append(currentRoom.roomType);
 		roomLook.append(". You can see a path leading to the");
@@ -35,7 +35,7 @@ public class Player extends AbstractActor{
 			roomLook.append(" West");
 		}
 		roomLook.append(".");
-		//currentRoom.roomReport();
+		currentRoom.roomReport();
 
 		return roomLook.toString();
 	}

@@ -15,19 +15,19 @@ public class Room extends AbstractRoom {
 		this.cleared = cleared;
 		this.RoomID = RoomID;
 		Random rand = new Random();
-		int light = rand.nextInt(3);
+		int adj = rand.nextInt(3);
 		int environment = rand.nextInt(5);
-		if (light == 0) {
-			lightLevel = "dark";
+		if (adj == 0) {
+			adjective = "overgrown";
 		}
-		else if (light == 1) {
-			lightLevel = "dim";
+		else if (adj == 1) {
+			adjective = "vibrant";
 		}
-		else if (light == 2) {
-			lightLevel = "well-lit";
+		else if (adj == 2) {
+			adjective = "barren";
 		}
 		else {
-			lightLevel = "bright";
+			adjective = "ancient";
 		}
 		if (environment == 0) {
 			roomType = "cave";
@@ -39,10 +39,10 @@ public class Room extends AbstractRoom {
 			roomType = "meadow";
 		}
 		else if (environment == 3) {
-			roomType = "rocky hill";
+			roomType = "field of broken stones";
 		}
 		else {
-			roomType = "dry field";
+			roomType = "rocky field";
 		}
 
 	}

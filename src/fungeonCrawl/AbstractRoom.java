@@ -14,7 +14,7 @@ public abstract class AbstractRoom {
     public AbstractRoom West;
     public AbstractRoom next;
 
-    protected String lightLevel;
+    protected String adjective;
     protected String roomType;
     public int RoomID;
     public boolean cleared = false;
@@ -38,13 +38,13 @@ public abstract class AbstractRoom {
     }
 
     public void roomReport() {
-        System.out.println("Room" + RoomID + " exists.");
+        System.out.println("You are in room" + RoomID);
         System.out.println(getOccupants());
         System.out.println(getTreasure());
-        System.out.println(this.North);
-        System.out.println(this.South);
-        System.out.println(this.East);
-        System.out.println(this.West);
+        //System.out.println(this.North);
+        //System.out.println(this.South);
+        //System.out.println(this.East);
+        //System.out.println(this.West);
 
     }
     private boolean getCleared() {
