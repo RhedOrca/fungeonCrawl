@@ -14,6 +14,7 @@ public class Player extends AbstractActor{
 	Player(String name, String unitClass) {
 		setName(name);
 		this.unitClass = unitClass;
+		this.species = "Human";
 	}
 
 	public String look() {
@@ -24,7 +25,14 @@ public class Player extends AbstractActor{
 		roomLook.append(currentRoom.adjective);
 		roomLook.append(" ");
 		roomLook.append(currentRoom.roomType);
-		roomLook.append(". \nYou can see a path leading to the");
+		roomLook.append(".");
+		if (!currentRoom.getOccupants().get(0).species.equals("Human")) {
+			roomLook.append("\nThere is a " + currentRoom.getOccupants().get(0).species + " nearby.");
+		}
+		else {
+			roomLook.append("\nYou appear to be alone.");
+		}
+		roomLook.append("\nExits:");
 		if (currentRoom.North != null) {
 			roomLook.append(" North");
 		}
@@ -38,13 +46,12 @@ public class Player extends AbstractActor{
 			roomLook.append(" West");
 		}
 		if (currentRoom.Up != null) {
-			roomLook.append("\nIt looks like there's a way Up.");
+			roomLook.append(" Up");
 		}
 		if (currentRoom.Down != null) {
-			roomLook.append("\nIt looks like there's a way Down.");
+			roomLook.append(" Down");
 		}
-		roomLook.append("\nThere is a " + currentRoom.getOccupants());
-
+		roomLook.append(".");
 		return roomLook.toString();
 	}
 }

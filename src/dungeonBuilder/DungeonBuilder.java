@@ -12,6 +12,7 @@ public class DungeonBuilder {
 	public void buildDungeon(int dungeonLength, Player player) {
 		Room[] dungeon = new Room[dungeonLength];
 		dungeon[0] = Room0;
+		Room0.occupants.add(player);
 		Random rand = new Random();
 		player.setLocation(Room0);
 		int inProgressRoomID = 1;

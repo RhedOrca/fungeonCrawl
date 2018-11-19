@@ -19,7 +19,7 @@ public class Main {
 		DungeonBuilder dungeonBuilder = new DungeonBuilder();
 		dungeonBuilder.buildDungeon(dungeonLength, player1);
 
-
+		System.out.println(player1.look());
 		System.out.println("What would you like to do?" + " You can: Look (L), Go (G), etc...");
 
 		while (player1.getIsAlive()) {
